@@ -1,0 +1,107 @@
+[
+    {
+        "name": "Bí ẩn - Siêu nhiên",
+        "seo": "bi-an-sieu-nhien",
+        "value": "v0"
+    },
+    {
+        "name": "Thể thao - Âm nhạc",
+        "seo": "the-thao-am-nhac",
+        "value": "v1"
+    },
+    {
+        "name": "Chiến tranh",
+        "seo": "chien-tranh",
+        "value": "v2"
+    },
+    {
+        "name": "Chính kịch - Drama",
+        "seo": "chinh-kich-drama",
+        "value": "v3"
+    },
+    {
+        "name": "Cổ trang",
+        "seo": "co-trang",
+        "value": "v4"
+    },
+    {
+        "name": "Gia đình",
+        "seo": "gia-dinh",
+        "value": "v5"
+    },
+    {
+        "name": "Hoạt hình",
+        "seo": "hoat-hinh",
+        "value": "v6"
+    },
+    {
+        "name": "Hài hước",
+        "seo": "hai-huoc",
+        "value": "v7"
+    },
+    {
+        "name": "Hành động",
+        "seo": "hanh-dong",
+        "value": "v8"
+    },
+    {
+        "name": "Hình sự",
+        "seo": "hinh-su",
+        "value": "v9"
+    },
+    {
+        "name": "Hồi hộp - Gây cấn",
+        "seo": "hoi-hop-gay-can",
+        "value": "10"
+    },
+    {
+        "name": "Kinh dị",
+        "seo": "kinh-di",
+        "value": "11"
+    },
+    {
+        "name": "Phiêu lưu",
+        "seo": "phieu-luu",
+        "value": "12"
+    },
+    {
+        "name": "Thần thoại",
+        "seo": "than-thoai",
+        "value": "13"
+    },
+    {
+        "name": "Tài liệu",
+        "seo": "tai-lieu",
+        "value": "14"
+    },
+    {
+        "name": "Tâm lý",
+        "seo": "tam-ly",
+        "value": "15"
+    },
+    {
+        "name": "Tình cảm - Lãng mạn",
+        "seo": "tinh-cam-lang-man",
+        "value": "16"
+    },
+    {
+        "name": "Viễn tưởng",
+        "seo": "vien-tuong",
+        "value": "17"
+    },
+    {
+        "name": "Võ thuật",
+        "seo": "vo-thuat",
+        "value": "18"
+    },
+    {
+        "name": "Trailer",
+        "seo": "sap-chieu",
+        "value": "19"
+    },
+    {
+        "name": "TV - Show",
+        "seo": "tv-show",
+        "value": "20"
+    }
+]

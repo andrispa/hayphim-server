@@ -1,0 +1,16 @@
+{
+    "short_name": "",
+    "name": "Appfim",
+    "description": "Power by mèocoder",
+    "icons": [
+      {
+        "src": "",
+        "type": "",
+        "sizes": ""
+      }
+    ],
+    "start_url": "/",
+    "background_color": "#3367D6",
+    "display": "standalone",
+    "theme_color": "#6777ef"
+  }

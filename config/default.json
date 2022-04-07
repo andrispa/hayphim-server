@@ -1,0 +1,125 @@
+{
+    "server": {
+        "host": "localhost",
+        "host1": "meocoder.com",
+        "port": 80
+    },
+    "database": {
+        "server_1": "mongodb+srv://mc_appfim:mXqN3EHy8aHSXatV@datainfomovie-ejvbf.gcp.mongodb.net/test?retryWrites=true&w=majority",
+        "db_sv_1": "data_movies",
+        "cl_info_movie": "info_movies",
+        "server_2": "mongodb+srv://meocoder:WyYz9QoLEr8JEy2W@clusterappfimdata2-knt1i.mongodb.net/test?retryWrites=true&w=majority",
+        "db_sv_2": "meocoder_data_1",
+        "cl_users": "users",
+        "cl_report_episode_error": "report_episode_error",
+        "cl_star_vote": "star_vote",
+        "server_3": "mongodb+srv://meocoder:gSQ5KdZyQFi4SIuW@dataepisode-fytmk.gcp.mongodb.net/test?retryWrites=true&w=majority",
+        "db_sv_3": "data_episode",
+        "cl_episode": "episodes",
+        "server_4": "mongodb+srv://VkY8IXt9L6e1WK9O:ySofZokFmumK17b6@appfimdata4-8nhxk.gcp.mongodb.net/test?retryWrites=true&w=majority",
+        "db_sv_4": "meocoder",
+        "cl_custom": "custom",
+        "cl_cast": "cast",
+        "server_5": "mongodb+srv://VBge7djJw84xLQBO:O6Qj9HAhPpW9nTVU@commentdata-gjnhc.mongodb.net/test?retryWrites=true&w=majority",
+        "db_sv_5": "meocoder",
+        "cl_comment": "comment"
+    },
+    "security": {
+        "bcrypt_salt": "10",
+        "sessison_secret": "meocoder",
+        "admin_page": "admin"
+    },
+    "custom": {
+        "ten_website": "Appfim",
+        "dia_chi": "https://appfim.com/",
+        "email_website": "meocoder@appfim.com",
+        "tieu_de_website": "Appfim - Xem Phim Online Siêu Nét, Phim Bộ Vietsub, Phim Chiếu Rạp Hay",
+        "mo_ta_website": "Appfim - Xem Phim Mới, Phim Hay, Phim Bom Tấn Online nhanh nhất. Xem Phim Bộ, Phim Lẻ, Phim Chiếu Rạp chất lượng cao chuẩn HD.",
+        "tu_khoa_website": "appfim, bilutv org, bilutv net, bilutv com, xem phim, phim mới, phim bộ, phim lẻ, phim chiếu rạp, phim hàn quốc, phim trung quốc, phim thái lan, tv show, phim hoạt hình",
+        "tu_khoa_cuoi_trang": "tội phạm",
+        "copyright": "Copyright © 2020  Design By mèocoder <3",
+        "fb_page": "https://www.facebook.com/YeuphimhoanguVNFC/",
+        "fb_client_id": "2070762572951989",
+        "fb_secret_id": "8114d06956f38a64af26bc13fb0103b6",
+        "tw_username": "Appfim",
+        "img_social": "https://bilutv.org/Theme/images/icon-bilutv-fb.png",
+        "yt_api_key": "AIzaSyBGR3ywFh3gqDH8WAiZlr_DbrxygeQWbBU",
+        "analytics_code": "<p>&lt;!-- Global site tag (gtag.js) - Google Analytics --&gt;</p><p>&lt;script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-122754346-11\"&gt;&lt;/script&gt;</p><p>&lt;script&gt;</p><p>&nbsp; window.dataLayer = window.dataLayer || [];</p><p>&nbsp; function gtag(){dataLayer.push(arguments);}</p><p>&nbsp; gtag('js', new Date());</p><p>&nbsp; gtag('config', 'UA-122754346-11');</p><p>&lt;/script&gt;</p>"
+    },
+    "advanced": {
+        "tieu_de_the_loai": "[TOP] Phim %name% Chọn Lọc Hay Nhất - Cập Nhật Nhanh Nhất 2020 | Appfim",
+        "tu_khoa_the_loai": "xem phim %name% chọn lọc hay nhất, tổng hợp các bộ phim %name% Vietsub - Thuyết minh Full HD | Appfim",
+        "mo_ta_the_loai": "xem phim %name% chọn lọc hay nhất, tổng hợp các bộ phim %name% Vietsub - Thuyết minh Full HD | Appfim",
+        "tieu_de_quoc_gia": "[TOP] Phim %name% Chọn Lọc Hay Nhất - Cập Nhật Nhanh Nhất 2020 | Appfim",
+        "tu_khoa_quoc_gia": "Phim %name% 2020 VIETSUB Full HD mới nhất với các thể loại Tình Cảm, Hài Hước, Hành Động, Kinh Dị, tuyển chọn Phim %name% HAY và HOT nhất.",
+        "mo_ta_quoc_gia": "Phim %name% 2020 VIETSUB Full HD mới nhất với các thể loại Tình Cảm, Hài Hước, Hành Động, Kinh Dị, tuyển chọn Phim %name% HAY và HOT nhất.",
+        "tieu_de_danh_sach": "[TOP] Phim %name% Chọn Lọc Hay Nhất - Cập Nhật Nhanh Nhất 2020 | Appfim",
+        "tu_khoa_danh_sach": "phim %name%, danh sách phim %name%, bộ siêu tập phim %name%, phim %name% hay nhất, phim %name% mới nhất trên Appfim",
+        "mo_ta_danh_sach": "Danh sách phim %name% mới nhất, phim %name% hay chọn lọc, bộ siêu tập phim %name% 2020. xem online và download phim %name% HD",
+        "tieu_de_tim_kiem": "Phim %name% | Xem Phim %name% Full HD | Appfim",
+        "tu_khoa_tim_kiem": "phim %name%, xem phim %name%, download phim %name%, phim %name% vietsub, phim %name% thuyết minh trên Appfim",
+        "mo_ta_tim_kiem": "Danh sách phim %name% mới nhất, xem phim %name% hay chọn lọc, download phim %name% vietsub, thuyết minh lồng tiếng nhanh nhất tại Appfim"
+    },
+    "number_movie": {
+        "on_page": "10",
+        "on_load": "10"
+    },
+    "home": {
+        "title": [
+            "PHIM CHIẾU RẠP",
+            "PHIM BỘ MỚI",
+            "PHIM LẺ MỚI",
+            "PHIM SẮP CHIẾU",
+            "HOẠT HÌNH - ANIME",
+            "ĐƯỢC YÊU THÍCH"
+        ],
+        "skip": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "limit": [
+            "12",
+            "12",
+            "12",
+            "8",
+            "12",
+            "6"
+        ],
+        "type": [
+            "1",
+            "3",
+            "1",
+            "4",
+            "1",
+            "5"
+        ],
+        "ID": [
+            "phimRap",
+            "phimBo",
+            "phimLe",
+            "Trailer",
+            "hoatHinh",
+            "love"
+        ],
+        "query": [
+            "InRfbC50X2YiOiAx",
+            "JGFuZDogWyB7ICRvciA6IFsgeyJ0X2wudF9mIiA6IDJ9LCB7InRfbC50X2YiIDogM30gXSB9LCB7ImNfYy5jYSI6IHsgJG5pbjogWyAvdjYvaSwgLzE5L2kgXSB9IH0gXQ==",
+            "InRfbC50X2YiOiAw",
+            "ImNfYy5jYSI6IHsgJGluOiBbIC8xOS9pIF0gfQ==",
+            "ImNfYy5jYSI6IHsgJGluOiBbIC92Ni9pIF0gfQ==",
+            "ImNfYy5jYSI6IHsgJGluOiBbIC92Ni9pIF0gfQ=="
+        ],
+        "option": [
+            "dXJsOiAxLCAnaW1nLnBvc3Rlcic6IDEsICduYW1lLnZuJzogMSwgJ25hbWUuZW4nOiAxLCAnc3RhdHVzLnInOiAxLCAnc3RhdHVzLmwnOiAxLCAnb3RoZXIudmlldyc6IDEsICdvdGhlci50X2ZpbG0nOiAx",
+            "dXJsOiAxLCAiaW1nLnBvc3RlciI6IDEsICJuYW1lLnZuIjogMSwgIm5hbWUuZW4iOiAxLCAic3RhdHVzLnIiOiAxLCAic3RhdHVzLnMiOiAxLCAib3RoZXIudmlldyI6IDEsICJvdGhlci50X2ZpbG0iOiAx",
+            "dXJsOiAxLCAnaW1nLnBvc3Rlcic6IDEsICduYW1lLnZuJzogMSwgJ25hbWUuZW4nOiAxLCAnc3RhdHVzLnInOiAxLCAnc3RhdHVzLmwnOiAxLCAnb3RoZXIudmlldyc6IDEsICdvdGhlci50X2ZpbG0nOiAx",
+            "dXJsOiAxLCAnaW1nLnBvc3Rlcic6IDEsICduYW1lLnZuJzogMSwgJ25hbWUuZW4nOiAxLCAnb3RoZXIudmlldyc6IDEsICdvdGhlci5kJzogMQ==",
+            "dXJsOiAxLCAnaW1nLnBvc3Rlcic6IDEsICduYW1lLnZuJzogMSwgJ25hbWUuZW4nOiAxLCAnc3RhdHVzLnInOiAxLCAnc3RhdHVzLmwnOiAxLCAnb3RoZXIudmlldyc6IDEsICdvdGhlci50X2ZpbG0nOiAx",
+            "dXJsOiAxLCAnaW1nLnBvc3Rlcic6IDEsICduYW1lLnZuJzogMSwgJ25hbWUuZW4nOiAxLCAnc3RhdHVzLnInOiAxLCAnc3RhdHVzLmwnOiAxLCAnb3RoZXIudmlldyc6IDEsICdvdGhlci50X2ZpbG0nOiAx"
+        ]
+    }
+}
