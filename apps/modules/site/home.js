@@ -1,5 +1,6 @@
 const ObjectID = require('mongodb').ObjectID;
 const JWT = require('../../helpers/jwt.helper');
+const helper = require("../auth/helper");
 
 // Lấy danh sách phim
 function getFilmHome(db, query, projection, sort, limit, skip){
@@ -30,16 +31,16 @@ function addReportMovie(db, params){
         });
     }
     const dbo = db.db(process.env.DB_SV_2);
-    return dbo.collection(process.env.CL_REPORT_EPISODE_ERROR).updateOne({ "_id" : ObjectID(params.id) },{ $set: { name: params.name, url: params.url }, $addToSet: { error: { $each: [ JSON.parse(params.error) ] } } }, {upsert: true} );
+    return dbo.collection(process.env.CL_REPORT_EPISODE_ERROR).updateOne({ "_id" : ObjectID(params.id) },{ $set: { name: params.name, url: params.url, m_t: new Date() }, $addToSet: { error: { $each: [ JSON.parse(params.error) ] } } }, {upsert: true} );
 }
 // Thêm bình luận
-async function addComment(db, params, token) {
-    if (!db || !params.content || !params.id_m && !params.id_commnent || !params.mode || !token) {
+async function addComment(db, params, idUser) {
+    if (!db || !params.content || !params.id_m && !params.id_commnent || !params.mode || !idUser) {
         return new Promise((resolve, reject) => {
             reject({ code: 0 })
         });
     }
-    const { data } = await JWT.verifyToken(token.split('Bearer ')[1], 'meocoder');
+    // const { data } = await JWT.verifyToken(token.split('Bearer ')[1], process.env.SECURITY_JWT);
     const dataComment = {};
     const dbo = db.db(process.env.DB_SV_5);
     switch (params.mode) {
@@ -49,9 +50,9 @@ async function addComment(db, params, token) {
                 dataComment['content'] = params.content;
                 dataComment['id_m'] = params.id_m;
                 dataComment['time'] = new Date();
-                dataComment['u_name'] = data.name,
-                data.type === 'fb' ? dataComment['u_img'] = data.id : null;
-                dataComment['id_u'] = data._id || data.id;
+                // dataComment['u_name'] = data.name,
+                // data.type === 'fb' ? dataComment['u_img'] = data.id : null;
+                dataComment['id_u'] = idUser;
                 return dbo.collection(process.env.CL_COMMENT).insertOne(dataComment);
             } catch (error) {
                 return new Promise((resolve, reject) => {
@@ -65,9 +66,9 @@ async function addComment(db, params, token) {
                 dataComment['content'] = params.content;
                 dataComment['id_parent'] = params.id_commnent;
                 dataComment['time'] = new Date();
-                dataComment['u_name'] = data.name,
-                data.type === 'fb' ? dataComment['u_img'] = data.id : null;
-                dataComment['id_u'] = data._id || data.id;
+                // dataComment['u_name'] = data.name,
+                // data.type === 'fb' ? dataComment['u_img'] = data.id : null;
+                dataComment['id_u'] = idUser;
                 await dbo.collection(process.env.CL_COMMENT).updateOne( { _id: ObjectID(params.id_commnent) }, { $inc: { "nComment": parseInt(1) } } );
                 return dbo.collection(process.env.CL_COMMENT).insertOne(dataComment);
             } catch (error) {
@@ -77,7 +78,7 @@ async function addComment(db, params, token) {
             }
         default:
             return new Promise((resolve, reject) => {
-                reject({ code: error })
+                reject({ code: 1 })
             });
     }
 }
@@ -109,7 +110,7 @@ async function reactionComment(db, id, mode, token) {
         });
     }
     const dbo = db.db(process.env.DB_SV_5);
-    const { data } = await JWT.verifyToken(token.split('Bearer ')[1], 'meocoder');
+    const { data } = await JWT.verifyToken(token.split('Bearer ')[1], process.env.SECURITY_JWT);
     try {
         switch (mode) {
             case 'like':
@@ -127,7 +128,16 @@ async function reactionComment(db, id, mode, token) {
         });
     }
 }
-
+// Lấy danh sách thông tin người dùng
+function getListInfoUser(db, arrayID) {
+    if (!db || !arrayID) {
+        return new Promise((resolve, reject) => {
+            reject({ code: 0 })
+        });
+    }
+    const dbo = db.db(process.env.DB_SV_2);
+    return dbo.collection(process.env.CL_USERS).find( { $or: [ { _id: { $in: arrayID.map(id => ObjectID.isValid(id) ? ObjectID(id) : null) } }, { id: { $in: arrayID } } ] }, { projection: { _id: 1, name: 1, avatar: 1 } } ).toArray();
+}
 // Lấy danh sách diễn viên tham gia trong phim
 function getListCastMovie(db, idmovie){
     if (!db || !idmovie) {
@@ -154,7 +164,7 @@ async function getListMovieInCast(db, db_4, name, sort, limit, skip){
         });
         sort = eval('({' + sort + '})');
         const dbo = db.db(process.env.DB_SV_1);
-        return dbo.collection(process.env.CL_INFO_MOVIE).find( { _id: { $in: arrayID } }, { projection: { "url": 1, "img.poster": 1, "name.vn": 1, "name.en": 1, "status.r": 1, "status.s": 1, "status.l": 1, "other.view": 1, "other.t_film": 1, "_id": 0 } } ).sort(sort).limit(limit).skip(skip).toArray();
+        return dbo.collection(process.env.CL_INFO_MOVIE).find( { _id: { $in: arrayID } }, { projection: { "url": 1, "img.poster": 1, "name.vn": 1, "name.en": 1, "status.r": 1, "status.s": 1, "status.l": 1, "other.view": 1, "other.t_film": 1, "_id": 0, "t_l.t_f": 1 } } ).sort(sort).limit(limit).skip(skip).toArray();
     } else {
         return new Promise((resolve, reject) => {
             reject({ code: 0 })
@@ -184,14 +194,52 @@ function getListEp(db, id, projection){
     return dbo.collection(process.env.CL_EPISODE).findOne({ "_id" : ObjectID(id) }, { projection: projection });
 }
 // Lấy dánh sách thông tin tùy chỉnh của trang
-function getCustom(db){
-    if (!db) {
+function getCustom(db, locale){
+    if (!db || !locale) {
         return new Promise((resolve, reject) => {
             reject({ code: 0 })
         })
     }
     const dbo = db.db(process.env.DB_SV_4);
-    return dbo.collection(process.env.CL_CUSTOM).findOne({ "_id": 'data' }, { projection: { _id: 0 } });
+    return dbo.collection(process.env.CL_CUSTOM).findOne({ "_id": 'data_'+locale }, { projection: { _id: 0 } });
+}
+
+// Cập nhật thông tin người dùng
+async function accountUpdate(db, type, data, id){
+    if (!db || !type || !data || !id) {
+        return new Promise((resolve, reject) => {
+          // console.log(db ,type ,data ,id)
+            reject({ code: 0 })
+        })
+    }
+    const dbo = db.db(process.env.DB_SV_2);
+    switch (type) {
+        case 'avatar':
+            if (!data.avatar) return new Promise((resolve, reject) => {reject({ code: 0 })});
+            return dbo.collection(process.env.CL_USERS).updateOne( { _id: ObjectID(id) }, { $set: { avatar: data.avatar } } );
+        case 'change-password':
+            try{
+              if (!data.currentPassword || !data.newPassword) return new Promise((resolve, reject) => {reject({ code: 1 /* mật khẩu hiện tại hoặc mật khẩu mới trống */ })});
+              const { password } = await dbo.collection(process.env.CL_USERS).findOne( { _id: ObjectID(id) }, { projection: { _id: 0, password: 1 } } );
+              if (helper.checkPassword(data.currentPassword, password)) {
+                return dbo.collection(process.env.CL_USERS).updateOne( { _id: ObjectID(id) }, { $set: { password: helper.hashPassword(data.newPassword) } } );
+              }
+              return new Promise((resolve, reject) => {
+                  // console.log('3')
+                  reject({ code: 2 /* mật khâu khong chính xác */})
+              });
+            } catch (error) {
+              return new Promise((resolve, reject) => {
+                  // console.log('3')
+                  reject({ code: 0 })
+              });
+            }
+        default:
+            return new Promise((resolve, reject) => {
+                // console.log('3')
+                reject({ code: 0 })
+            });
+    }
 }
 module.exports = {
     getFilmHome,
@@ -205,5 +253,7 @@ module.exports = {
     addComment,
     getListComment,
     reactionComment,
-    getCustom
+    getCustom,
+    getListInfoUser,
+    accountUpdate
 }

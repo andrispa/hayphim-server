@@ -8,7 +8,7 @@ function uploadImg2Gitlab(url, name) {
                 form:{
                     content: Buffer.from(body).toString('base64'),
                     encoding: 'base64',
-                    branch: 'master',
+                    branch: 'main',
                     commit_message: new Date().toLocaleString(),
                     author_email: 'dangvinhprovn@gmail.com',
                     author_name: 'meo coder'
