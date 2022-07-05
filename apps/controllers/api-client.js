@@ -718,19 +718,20 @@ router.post("/playback", function (req, res) {
                                 type: "embed",
                                 ep: episode[req.body.value].e.split("**")[0],
                             });
-                        } else if (episode[req.body.value].wtor) {
+                        } else if (episode[req.body.value].tor) {
                             return res.json({
                                 status: "ok",
                                 type: "webtor",
                                 ep: episode[req.body.value].tor.split("**")[0],
                             });
-                        } else if (episode[req.body.value].tor) {
-                            return res.json({
-                                status: "ok",
-                                type: "torvip",
-                                ep: episode[req.body.value].tor.split("**")[0],
-                            });
-                        }
+                        } 
+                        // else if (episode[req.body.value].tor) {
+                        //     return res.json({
+                        //         status: "ok",
+                        //         type: "torvip",
+                        //         ep: episode[req.body.value].tor.split("**")[0],
+                        //     });
+                        // }
                         // else if (episode[req.body.value].tor) {
                         //     return res.json({
                         //         status: "ok",
@@ -844,16 +845,17 @@ router.post("/playback", function (req, res) {
                                 } else if (data.l[req.body.value].tor) {
                                     return res.json({
                                         status: "ok",
-                                        type: "torvip",
-                                        ep: data.l[req.body.value].tor.split("**")[0],
-                                    });
-                                } else if (data.l[req.body.value].tor) {
-                                    return res.json({
-                                        status: "ok",
                                         type: "webtor",
                                         ep: data.l[req.body.value].tor.split("**")[0],
                                     });
                                 }
+                                // else if (data.l[req.body.value].tor) {
+                                //     return res.json({
+                                //         status: "ok",
+                                //         type: "torvip",
+                                //         ep: data.l[req.body.value].tor.split("**")[0],
+                                //     });
+                                // }
                                 // else if (data.l[req.body.value].tor) {
                                 //     return res.json({
                                 //         status: "ok",
