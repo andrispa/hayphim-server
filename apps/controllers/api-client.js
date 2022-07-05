@@ -563,6 +563,9 @@ router.post("/totalEp", function (req, res) {
             iterator.e
                 ? numberServer.push(iterator.e.split("**").length)
                 : numberServer.push(0);
+            iterator.wtor
+                ? numberServer.push(iterator.tor.split("**").length)
+                : numberServer.push(0);
             iterator.tor
                 ? numberServer.push(iterator.tor.split("**").length)
                 : numberServer.push(0);
@@ -678,11 +681,18 @@ router.post("/playback", function (req, res) {
                     case "4":
                         a = episode[req.body.value].tor.split("**");
                         if (req.body.meo < a.length) {
-                            return res.json({ status: "ok", type: "torvip", ep: a[req.body.meo] });
+                            return res.json({ status: "ok", type: "webtor", ep: a[req.body.meo] });
                         } else {
                             return res.json(errorMess);
                         }
                     case "5":
+                        a = episode[req.body.value].tor.split("**");
+                        if (req.body.meo < a.length) {
+                            return res.json({ status: "ok", type: "torvip", ep: a[req.body.meo] });
+                        } else {
+                            return res.json(errorMess);
+                        }
+                    case "6":
                         a = episode[req.body.value].tor.split("**");
                         if (req.body.meo < a.length) {
                             return res.json({ status: "ok", type: "torrent", ep: a[req.body.meo] });
@@ -708,13 +718,19 @@ router.post("/playback", function (req, res) {
                                 type: "embed",
                                 ep: episode[req.body.value].e.split("**")[0],
                             });
+                        } else if (episode[req.body.value].wtor) {
+                            return res.json({
+                                status: "ok",
+                                type: "webtor",
+                                ep: episode[req.body.value].tor.split("**")[0],
+                            });
                         } else if (episode[req.body.value].tor) {
                             return res.json({
                                 status: "ok",
                                 type: "torvip",
                                 ep: episode[req.body.value].tor.split("**")[0],
                             });
-                        } 
+                        }
                         // else if (episode[req.body.value].tor) {
                         //     return res.json({
                         //         status: "ok",
@@ -778,6 +794,17 @@ router.post("/playback", function (req, res) {
                                 if (req.body.meo < a.length) {
                                     return res.json({
                                         status: "ok",
+                                        type: "webtor",
+                                        ep: a[req.body.meo],
+                                    });
+                                } else {
+                                    return res.json(errorMess);
+                                }
+                            case "4":
+                                a = data.l[req.body.value].tor.split("**");
+                                if (req.body.meo < a.length) {
+                                    return res.json({
+                                        status: "ok",
                                         type: "torvip",
                                         ep: a[req.body.meo],
                                     });
@@ -820,7 +847,13 @@ router.post("/playback", function (req, res) {
                                         type: "torvip",
                                         ep: data.l[req.body.value].tor.split("**")[0],
                                     });
-                                } 
+                                } else if (data.l[req.body.value].tor) {
+                                    return res.json({
+                                        status: "ok",
+                                        type: "webtor",
+                                        ep: data.l[req.body.value].tor.split("**")[0],
+                                    });
+                                }
                                 // else if (data.l[req.body.value].tor) {
                                 //     return res.json({
                                 //         status: "ok",
