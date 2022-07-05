@@ -563,7 +563,7 @@ router.post("/totalEp", function (req, res) {
             iterator.e
                 ? numberServer.push(iterator.e.split("**").length)
                 : numberServer.push(0);
-            iterator.tor
+            iterator.wtor
                 ? numberServer.push(iterator.tor.split("**").length)
                 : numberServer.push(0);
             iterator.tor
@@ -718,20 +718,19 @@ router.post("/playback", function (req, res) {
                                 type: "embed",
                                 ep: episode[req.body.value].e.split("**")[0],
                             });
-                        } else if (episode[req.body.value].tor) {
+                        } else if (episode[req.body.value].wtor) {
                             return res.json({
                                 status: "ok",
                                 type: "webtor",
                                 ep: episode[req.body.value].tor.split("**")[0],
                             });
+                        } else if (episode[req.body.value].tor) {
+                            return res.json({
+                                status: "ok",
+                                type: "torvip",
+                                ep: episode[req.body.value].tor.split("**")[0],
+                            });
                         }
-                        // else if (episode[req.body.value].tor) {
-                        //     return res.json({
-                        //         status: "ok",
-                        //         type: "torvip",
-                        //         ep: episode[req.body.value].tor.split("**")[0],
-                        //     });
-                        // }
                         // else if (episode[req.body.value].tor) {
                         //     return res.json({
                         //         status: "ok",
@@ -853,20 +852,19 @@ router.post("/playback", function (req, res) {
                                         type: "embed",
                                         ep: data.l[req.body.value].e.split("**")[0],
                                     });
-                                } else if (data.l[req.body.value].tor) {
+                                } else if (data.l[req.body.value].wtor) {
                                     return res.json({
                                         status: "ok",
                                         type: "webtor",
                                         ep: data.l[req.body.value].tor.split("**")[0],
                                     });
+                                } else if (data.l[req.body.value].tor) {
+                                    return res.json({
+                                        status: "ok",
+                                        type: "torvip",
+                                        ep: data.l[req.body.value].tor.split("**")[0],
+                                    });
                                 }
-                                // else if (data.l[req.body.value].tor) {
-                                //     return res.json({
-                                //         status: "ok",
-                                //         type: "torvip",
-                                //         ep: data.l[req.body.value].tor.split("**")[0],
-                                //     });
-                                // }
                                 // else if (data.l[req.body.value].tor) {
                                 //     return res.json({
                                 //         status: "ok",
