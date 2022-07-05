@@ -563,7 +563,7 @@ router.post("/totalEp", function (req, res) {
             iterator.e
                 ? numberServer.push(iterator.e.split("**").length)
                 : numberServer.push(0);
-            iterator.wtor
+            iterator.tor
                 ? numberServer.push(iterator.tor.split("**").length)
                 : numberServer.push(0);
             iterator.tor
