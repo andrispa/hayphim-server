@@ -679,7 +679,7 @@ router.post("/playback", function (req, res) {
                             return res.json(errorMess);
                         }
                     case "4":
-                        a = episode[req.body.value].tor.split("**");
+                        a = episode[req.body.value].wtor.split("**");
                         if (req.body.meo < a.length) {
                             return res.json({ status: "ok", type: "webtor", ep: a[req.body.meo] });
                         } else {
@@ -722,7 +722,7 @@ router.post("/playback", function (req, res) {
                             return res.json({
                                 status: "ok",
                                 type: "webtor",
-                                ep: episode[req.body.value].tor.split("**")[0],
+                                ep: episode[req.body.value].wtor.split("**")[0],
                             });
                         } else if (episode[req.body.value].tor) {
                             return res.json({
@@ -790,18 +790,7 @@ router.post("/playback", function (req, res) {
                                     return res.json(errorMess);
                                 }
                             case "4":
-                                a = data.l[req.body.value].tor.split("**");
-                                if (req.body.meo < a.length) {
-                                    return res.json({
-                                        status: "ok",
-                                        type: "webtor",
-                                        ep: a[req.body.meo],
-                                    });
-                                } else {
-                                    return res.json(errorMess);
-                                }
-                            case "4":
-                                a = data.l[req.body.value].tor.split("**");
+                                a = data.l[req.body.value].wtor.split("**");
                                 if (req.body.meo < a.length) {
                                     return res.json({
                                         status: "ok",
@@ -856,7 +845,7 @@ router.post("/playback", function (req, res) {
                                     return res.json({
                                         status: "ok",
                                         type: "webtor",
-                                        ep: data.l[req.body.value].tor.split("**")[0],
+                                        ep: data.l[req.body.value].wtor.split("**")[0],
                                     });
                                 } else if (data.l[req.body.value].tor) {
                                     return res.json({
