@@ -552,25 +552,25 @@ router.post("/report-movie", function (req, res) {
 router.post("/totalEp", function (req, res) {
     function getListServer(data) {
         const listServser = [];
-        for (const iterator of data) {
+        for (const serverVideo of data) {
             const numberServer = [];
-            iterator.p
-                ? numberServer.push(iterator.p.split("**").length)
+            serverVideo.p
+                ? numberServer.push(serverVideo.p.split("**").length)
                 : numberServer.push(0);
-            iterator.d
-                ? numberServer.push(iterator.d.split("**").length)
+            serverVideo.d
+                ? numberServer.push(serverVideo.d.split("**").length)
                 : numberServer.push(0);
-            iterator.e
-                ? numberServer.push(iterator.e.split("**").length)
+            serverVideo.e
+                ? numberServer.push(serverVideo.e.split("**").length)
                 : numberServer.push(0);
-            iterator.wtor
-                ? numberServer.push(iterator.wtor.split("**").length)
+            serverVideo.wtor
+                ? numberServer.push(serverVideo.wtor.split("**").length)
                 : numberServer.push(0);
-            iterator.tor
-                ? numberServer.push(iterator.tor.split("**").length)
+            serverVideo.tor
+                ? numberServer.push(serverVideo.tor.split("**").length)
                 : numberServer.push(0);
-            iterator.tor
-                ? numberServer.push(iterator.tor.split("**").length)
+            serverVideo.tor
+                ? numberServer.push(serverVideo.tor.split("**").length)
                 : numberServer.push(0);
             listServser.push(numberServer);
         }

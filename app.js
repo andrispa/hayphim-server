@@ -66,12 +66,12 @@ Promise.all([
     const port = process.env.PORT || 3000;
     app.listen(port, function () {
       console.log("[server] on http");
-      setInterval(() => {
-        const https = require('https');
-        // https://api.allorigins.win/get?url=
-        https.get(`https://hayphim.coin98.pw/`);
-        console.log('Ping!');
-      }, 4 * 60 * 1000);
+      // setInterval(() => {
+      //   const https = require('https');
+      //   // https://api.allorigins.win/get?url=
+      //   https.get(`https://hayphim.coin98.pw/`);
+      //   console.log('Ping!');
+      // }, 4 * 60 * 1000);
     });
     // https.createServer(httpsOption, app).listen(443, function() {
     //     console.log('[server] on https');
